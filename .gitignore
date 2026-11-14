@@ -1,0 +1,32 @@
+# системный мусор
+.DS_Store
+Thumbs.db
+
+# IDE / редакторы
+.idea/
+.vscode/
+*.swp
+
+# секреты и локальные настройки
+.env
+.env.local
+
+# зависимости
+vendor/
+node_modules/
+
+# ddev: генерируемое и локальное
+.ddev/.global_commands/
+.ddev/.homeadditions/
+.ddev/db_snapshots/
+.ddev/.dbimage
+.ddev/.router
+.ddev/.webimage
+
+# логи
+*.log
+logs/
+
+# прочее
+*.sqlite
+*.sqlite3
