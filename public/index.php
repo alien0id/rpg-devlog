@@ -19,6 +19,21 @@ if ($path !== '/') {
     $path = rtrim($path, '/');
 }
 
+if (str_starts_with($path, '/post/')) {
+    $slug = substr($path, strlen('/post/'));
+
+    $post = get_post_by_slug($slug);
+
+    if ($post !== null) {
+        render('post', $post['title'], ['post' => $post]);
+    } else {
+        http_response_code(404);
+        render('404', 'Страница не найдена');
+    }
+
+    exit;
+}
+
 switch ($path) {
     case '/':
         render('home', 'Главная страница');

@@ -11,11 +11,11 @@ $posts = get_all_posts();
         <article>
             <h2>
                 <a href="/post/<?= $post['slug'] ?>">
-                    <?= $post['title'] ?>
+                    <?= htmlspecialchars($post['title']) ?>
                 </a>
             </h2>
-            <small><?= $post['date'] ?> | <?= $post['category'] ?></small>
-            <p><?= mb_substr($post['content'], 0, 150) ?>...</p>
+            <small><?= htmlspecialchars($post['date']) ?> | <?= htmlspecialchars($post['category']) ?></small>
+            <p><?= nl2br(htmlspecialchars(mb_substr($post['content'], 0, 150))) ?>...</p>
         </article>
     <?php endforeach; ?>
 <?php endif; ?>
