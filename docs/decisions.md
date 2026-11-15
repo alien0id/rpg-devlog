@@ -148,3 +148,25 @@ SQLite (файл, без сервера) + PDO, когда почувствуе�
 
 **Решили:** деплой: shared-хостинг для портфолио, VPS — позже как навык.
 Код с самого начала пишем deploy-ready: конфиг отдельно, docroot public, ошибки в лог, пути относительные
+
+---
+
+## 2026-11-14 — Таблица URL -> что в REQUEST_URI -> что в PATH -> что в METHOD
+
+|URL|REQUEST_URI|PATH|METHOD|
+|:---:|:---:|:---:|:---:|
+|https://rpg-devlog.ddev.site/|/|/|GET|
+|https://rpg-devlog.ddev.site/about|/about|/about|GET|
+|https://rpg-devlog.ddev.site/about?ref=menu|/about?ref=menu|/about|GET|
+|https://rpg-devlog.ddev.site/post/5|/post/5|/post/5|GET|
+|https://rpg-devlog.ddev.site/foo?x=1&y=2|/foo?x=1&y=2|/foo|GET|
+|https://rpg-devlog.ddev.site/about/|/about/|/about/|GET|
+|https://rpg-devlog.ddev.site/абв|/%D0%B0%D0%B1%D0%B2|/%D0%B0%D0%B1%D0%B2|GET|
+
+---
+
+## 2026-11-14 — Правило путей
+
+**Решили:** все пути через __DIR__, никаких абсолютных путей.
+
+**Почему:** чтобы не зависеть от того, откуда запущен скрипт.
