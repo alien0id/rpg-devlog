@@ -1,5 +1,14 @@
 <?php
+declare(strict_types=1);
 
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+set_error_handler(function (int $no, string $str, string $file, int $line) {
+    throw new ErrorException($str, 0, $no, $file, $line);
+});
+
+require __DIR__ . '/../src/data.php';
 require __DIR__ . '/../src/helpers.php';
 
 $url = $_SERVER['REQUEST_URI'];
