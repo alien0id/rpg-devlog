@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__ . '/../src/helpers.php';
+
 $url = $_SERVER['REQUEST_URI'];
 $path = parse_url($url, PHP_URL_PATH);
 // $pathTemplates = require __DIR__ . '/../templates/pages/';
@@ -10,13 +12,13 @@ if ($path !== '/') {
 
 switch ($path) {
     case '/':
-        require __DIR__ . '/../templates/pages/home.php';
+        render('home', 'Главная страница');
         break;
     case '/about':
-        require __DIR__ . '/../templates/pages/about.php';
+        render('about', 'О блоге');
         break;
     default:
         http_response_code(404);
-        require __DIR__ . '/../templates/pages/404.php';
+        render('404', 'Страница не найдена');
         break;
 }
